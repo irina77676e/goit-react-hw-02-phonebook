@@ -1,16 +1,20 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import React, { Component } from 'react';
+import Phonebook from './Phonebook/phonebook';
+
+class App extends Component {
+  state = {
+    contacts: [],
+  };
+  formSubmitHandler = data => {
+    console.log(data);
+  };
+  render() {
+    return (
+      <>
+        <Phonebook onSubmit={this.formSubmitHandler} />
+      </>
+    );
+  }
+}
+
+export default App;
