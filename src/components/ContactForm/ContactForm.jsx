@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import { PropTypes } from 'prop-types';
+import { Form, Input, Button } from './ContactForm.styled';
 
-class Phonebook extends Component {
+class ContactForm extends Component {
   state = {
     name: '',
     number: '',
@@ -29,10 +31,12 @@ class Phonebook extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <label htmlFor={this.nameInputId}>
+          <br />
           Name
-          <input
+          <br />
+          <Input
             type="text"
             value={this.state.name}
             onChange={this.handleChange}
@@ -44,8 +48,10 @@ class Phonebook extends Component {
           />
         </label>
         <label htmlFor={this.numberInputId}>
+          <br />
           Number
-          <input
+          <br />
+          <Input
             type="tel"
             value={this.state.number}
             onChange={this.handleChange}
@@ -56,10 +62,18 @@ class Phonebook extends Component {
             required
           />
         </label>
-        <button type="submit">Add contact</button>
-      </form>
+        <Button type="submit">Add contact</Button>
+      </Form>
     );
   }
 }
 
-export default Phonebook;
+export default ContactForm;
+
+ContactForm.propType = {
+  name: PropTypes.string,
+  number: PropTypes.string,
+  handelSubmit: PropTypes.func,
+  numberInputId: PropTypes.string,
+  nameInputId: PropTypes.string,
+};
